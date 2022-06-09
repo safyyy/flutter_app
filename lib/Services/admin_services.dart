@@ -11,7 +11,7 @@ class AdminServices {
     var user = GetStorage().read("user");
     print(user['token']);
     try {
-      final response = await http.get(Uri.parse("$myBaseURL/citizens"), headers: {
+      final response = await http.get(Uri.parse("$myBaseURL/users"), headers: {
         'Authorization': 'Bearer ${user['token']}',
       });
       var result = jsonDecode(response.body);
@@ -44,6 +44,7 @@ class AdminServices {
       );
       if (response.statusCode == 200) {
         var result = jsonDecode(response.body);
+        print(result);
         return true;
       }
       return false;

@@ -24,8 +24,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   Future<List<Message>> getMessages() async {
     var user = GetStorage().read("user");
-    // print(user['token']);
-    // print(user['id']);
+
     try {
       final response = await http.get(Uri.parse("$myBaseURL/messages/${user['id']}"), headers: {
         'Authorization': 'Bearer ${user['token']}',
