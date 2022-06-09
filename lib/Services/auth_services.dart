@@ -1,25 +1,32 @@
 import 'dart:convert';
 
 import 'package:citoyen/Services/globals.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 
 class AuthServices {
   static Future<bool> userRegister(Map<String, dynamic> data) async {
-    final response =
-        await http.post(Uri.parse("$myBaseURL/auth/register"), body: data);
+    final response = await http.post(Uri.parse("$myBaseURL/auth/register"), body: data);
     print("response.body ${response.body}");
     if (response.statusCode == 200) {
       var mydata = json.decode(response.body);
+      GetStorage().write("user", {
+        "name": mydata["user"]["name"],
+        "email": mydata["user"]["email"],
+        "cin": mydata["user"]["cin"],
+        "gender": mydata["user"]["gender"],
+        "age": mydata["user"]["age"],
+        "token": mydata["token"],
+        "id": mydata["user"]["id"],
+      });
 
-      print(mydata);
       return true;
     } else
       return false;
   }
 
   static Future<int> userLogin(Map<String, dynamic> data) async {
-    final response =
-        await http.post(Uri.parse("$myBaseURL/auth/login"), body: data);
+    final response = await http.post(Uri.parse("$myBaseURL/auth/login"), body: data);
     if (response.statusCode == 200) {
       var mydata = json.decode(response.body);
       print(mydata);
@@ -27,6 +34,15 @@ class AuthServices {
       authUser = mydata['user'];
       isAdmin = mydata['user']['admin'];
       print(authUser);
+      GetStorage().write("user", {
+        "name": mydata["user"]["name"],
+        "email": mydata["user"]["email"],
+        "cin": mydata["user"]["cin"],
+        "gender": mydata["user"]["gender"],
+        "age": mydata["user"]["age"],
+        "token": mydata["token"],
+        "id": mydata["user"]["id"],
+      });
       // activated = mydata['user']['status'];
       // if(activated==0){
       //print("Account not activated yet");
@@ -39,6 +55,4 @@ class AuthServices {
       return 2;
     }
   }
-
-  
 }

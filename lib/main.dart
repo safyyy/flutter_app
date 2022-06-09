@@ -1,9 +1,12 @@
 import 'package:citoyen/Screens/Welcome/welcome_screen.dart';
 import 'package:citoyen/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 
-
-void main() => runApp(MyApp());
+void main() async {
+  await GetStorage.init();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -18,8 +21,7 @@ class MyApp extends StatelessWidget {
         primaryColor: kPrimaryColor,
         scaffoldBackgroundColor: Colors.white,
       ),
-      home:const WelcomeScreen(),
+      home: const WelcomeScreen(),
     );
   }
 }
-

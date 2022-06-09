@@ -40,14 +40,14 @@ dependencies:
   fluttertoast: ^8.0.9
   http: ^0.13.3
   global_snack_bar: ^0.0.12
-  provider: ^4.1.2
   device_info_plus: ^3.2.3
   get: ^4.6.3
   geolocator: ^8.2.1
   geocoding: ^2.0.1
   syncfusion_flutter_charts: ^20.1.58+1
   shared_preferences: ^2.0.15
-  
+  get_storage: ^2.0.3 # gestion de memoire cache de l'application
+
 
 
 
