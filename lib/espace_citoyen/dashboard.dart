@@ -4,7 +4,6 @@ import 'package:citoyen/espace_citoyen/drawer_widget.dart';
 import 'package:citoyen/espace_citoyen/home_page.dart';
 import 'package:citoyen/espace_citoyen/profile_page.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 import '../Screens/Welcome/welcome_screen.dart';
@@ -64,7 +63,10 @@ class _DashState extends State<Dash> {
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Logging out')));
                   GetStorage().remove("auth");
                   GetStorage().remove("type_auth");
-                  Get.to(WelcomeScreen());
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const WelcomeScreen()),
+                  );
                   return;
                 default:
                   setState(() => this.item = item);

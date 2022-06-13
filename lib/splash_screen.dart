@@ -5,8 +5,6 @@ import 'package:citoyen/constants.dart';
 import 'package:citoyen/espace_citoyen/dashboard.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:lottie/lottie.dart';
 
@@ -26,7 +24,13 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    var timer = Timer(Duration(seconds: 5), () => Get.to((auth == 1 ? (type_auth == 1 ? Dashbord() : Dash()) : WelcomeScreen())));
+    var timer = Timer(
+        Duration(seconds: 5),
+        () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => (auth == 1 ? (type_auth == 1 ? Dashbord() : Dash()) : WelcomeScreen()),
+            )));
   }
 
   @override

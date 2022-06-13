@@ -332,9 +332,14 @@ class _BodyState extends State<Body> {
                         final isValidForm = formKey.currentState!.validate();
                         if (isValidForm) {
                           createAccountPressed();
-//  Navigator.push(context,
-//            MaterialPageRoute(builder: (context){return AuthFinger();},),);
-
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return AuthFinger();
+                              },
+                            ),
+                          );
                         }
                       },
                       child: Text(
