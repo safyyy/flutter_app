@@ -59,7 +59,7 @@ class _BodyState extends State<Body> {
           'password': _password.text.trim(),
           "gender": gender
         };
-        AuthServices.userRegister(data).then((value) {
+        AuthServices.userRegister(data, 2).then((value) {
           if (value) {
             setState(() {
               isLoader = true;

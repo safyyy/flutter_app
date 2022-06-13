@@ -44,6 +44,7 @@ dependencies:
   get: ^4.6.3
   geolocator: ^8.2.1
   geocoding: ^2.0.1
+  lottie: ^1.2.2
   syncfusion_flutter_charts: ^20.1.58+1
   shared_preferences: ^2.0.15
   get_storage: ^2.0.3 # gestion de memoire cache de l'application

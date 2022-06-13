@@ -32,7 +32,7 @@ class _AdminLoginScreenState extends State<AdminLoginScreen> {
           isLoader = false;
         });
         final data = {'email': _email.text.trim(), 'password': _password.text.trim()};
-        AuthServices.userLogin(data).then((value) {
+        AuthServices.userLogin(data, 1).then((value) {
           if (value != 0 && value != 9) {
             setState(() {
               isLoader = true;

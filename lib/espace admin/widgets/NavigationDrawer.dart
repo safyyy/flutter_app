@@ -3,6 +3,11 @@ import 'package:citoyen/espace%20admin/Dash/crud.dart';
 import 'package:citoyen/espace%20admin/screens/Dashbord.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get_storage/get_storage.dart';
+
+import '../../Screens/Welcome/welcome_screen.dart';
 
 class NavigationDrawer extends StatefulWidget {
   const NavigationDrawer({Key? key}) : super(key: key);
@@ -195,7 +200,12 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
               hoverColor: Color.fromARGB(255, 157, 240, 146),
               leading: const Icon(Icons.logout_outlined),
               title: const Text('Logout'),
-              onTap: () {},
+              onTap: () {
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Logging out')));
+                GetStorage().remove("auth");
+                GetStorage().remove("type_auth");
+                Get.to(WelcomeScreen());
+              },
             ),
           ],
         ),
